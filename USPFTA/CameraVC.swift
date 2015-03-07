@@ -17,6 +17,9 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     var imagePicker = UIImagePickerController()
     
+    var flagData:[String:AnyObject] = [:]
+    var flagIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,7 +97,27 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 //        
 //        FeedData.mainData().feedItems.append(newFlag)
         
+        
+        // remove point from sampleData
+        let gameVC = presentingViewController as GameVC
+        
+        gameVC.sampleData.removeAtIndex(flagIndex)
+        
+        // remove last point from map
+        gameVC.mapView.removeAnnotations(gameVC.mapView.annotations)
+        gameVC.addFlags()
+        
+        // if there are no points left in sampleData, your game is over
+        if gameVC.sampleData.count == 0 {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("resultsVC") as ResultsVC
+            presentViewController(vc, animated: true, completion: nil)
+            
+        }
+        
         dismissViewControllerAnimated(true, completion: nil)
+        
         
     }
     

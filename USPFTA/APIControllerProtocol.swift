@@ -21,7 +21,7 @@ class APIController {
         
         // Now escape anything else that isn't URL-friendly
         if let escapedSearchTerm = jsonSearchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
-            let urlPath = ""
+            let urlPath = "https://tiy-hackathon.herokuapp.com/"
             let url = NSURL(string: urlPath)
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
@@ -32,15 +32,15 @@ class APIController {
                 }
                 var err: NSError?
                 
-                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
-                if(err != nil) {
-                    // If there is an error parsing JSON, print it to the console
-                    println("JSON Error \(err!.localizedDescription)")
-                }
-                
-                // FIXME: rails
-                let results: NSArray = jsonResult["results"] as NSArray
-                self.delegate?.didReceiveAPIResults(jsonResult)
+//                // FIXME: rails
+//                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+//                if(err != nil) {
+//                    // If there is an error parsing JSON, print it to the console
+//                    println("JSON Error \(err!.localizedDescription)")
+//                }
+//                
+//                let results: NSArray = jsonResult["results"] as NSArray
+//                self.delegate?.didReceiveAPIResults(jsonResult)
             })
             
             task.resume()

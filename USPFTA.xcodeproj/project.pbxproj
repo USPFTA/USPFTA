@@ -76,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC2887851AAB811200FF017B /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				EC29D87F1AAB58C400BB15D6 /* CameraVC.swift */,
+				EC29D87A1AAB557E00BB15D6 /* Camera.storyboard */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
 		EC29D86F1AAB323400BB15D6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,8 +132,7 @@
 			children = (
 				EC29D86F1AAB323400BB15D6 /* Login */,
 				EC29D87C1AAB55B300BB15D6 /* GameVCs */,
-				EC29D87A1AAB557E00BB15D6 /* Camera.storyboard */,
-				EC29D87F1AAB58C400BB15D6 /* CameraVC.swift */,
+				EC2887851AAB811200FF017B /* Camera */,
 				EC53153E1AAA8CB30077A14A /* Supporting Files */,
 			);
 			path = USPFTA;

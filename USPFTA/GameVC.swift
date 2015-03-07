@@ -13,7 +13,7 @@ let proximity:Double = 400 // meters
 
 class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    let sampleData: [[String:AnyObject]] = [ // other players' flags
+    var sampleData: [[String:AnyObject]] = [ // other players' flags
         ["latitude": 33.7586630800343, "longitude": -84.3826462453672, "objective": "Photo"],
         ["latitude": 33.7566878966899, "longitude": -84.3937825443492, "objective": "Audio"],
         ["latitude": 33.7522435697036, "longitude": -84.3845765360579, "objective": "Video"],
@@ -51,6 +51,11 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         mapView.setRegion(adjustedRegion, animated: true)
         
         // add flags to map
+        addFlags()
+
+    }
+    
+    func addFlags() {
         
         for location in sampleData as [[String:AnyObject]] {
             
@@ -63,30 +68,19 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             mapView.addAnnotation(annotation)
             
         }
-
+        
     }
     
-    // hide callout of user location
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
+        // hide callout of user location
         userLocation.title = ""
         
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
-        if let userLoc = userLocation {
-            
-            if annotation.coordinate.latitude == userLoc.coordinate.latitude && annotation.coordinate.longitude == userLoc.coordinate.longitude {
-                return nil
-            }
-            
-        }
-        
-        // only run this code if it's a pin--not the circle
-        if annotation.coordinate.latitude == geofenceCoord.latitude && annotation.coordinate.longitude == geofenceCoord.longitude {
-            return nil
-        } else {
+        if annotation is MKPointAnnotation {
             
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             annotationView.image = UIImage(named: "flag")
@@ -96,6 +90,8 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             return annotationView
             
         }
+        
+        return nil
         
     }
     
@@ -117,6 +113,8 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         userLocation = locations[0] as CLLocation
         
+        var i = 0
+        
         for location in sampleData as [[String:AnyObject]] {
             
             let latitude = location["latitude"] as CLLocationDegrees
@@ -125,18 +123,50 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             
             if userLocation.distanceFromLocation(flagLocation) < proximity {
                 
-                let notification = UILocalNotification()
-                notification.fireDate = nil
-                notification.alertBody = "You are near a flag."
-                //            notification.alertAction = "View List"
-                //            notification.soundName = "Glass.aiff"
-                
-                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-                
+                // present alert view
+                displayProximityAlert(location, index: i)
+                break
                 
             }
             
+            i++
+            
         }
+        
+    }
+    
+    func displayProximityAlert(location: [String:AnyObject], index: Int) {
+        
+        let objective = location["objective"] as String
+        
+        let alertController = UIAlertController(title: "You are near a flag", message: "Take a photo that represents \"\(objective)\"", preferredStyle: .Alert)
+        
+//        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
+//            
+////            // segue to whatever was tapped on:
+////            self.tabBarController?.selectedIndex = navigatingTo
+//            
+//        }
+//        
+//        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            
+            let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+            // TODO: change VC class
+            let vc = storyboard.instantiateViewControllerWithIdentifier("cameraVC") as CameraVC
+            
+            // pass flag data on to VC
+            vc.flagData = location
+            vc.flagIndex = index
+            
+            self.presentViewController(vc, animated: true, completion: nil)
+            
+        }
+        
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     
@@ -154,8 +184,7 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBAction func takePhoto(sender: AnyObject) {
         
         let storyboard = UIStoryboard(name: "Camera", bundle: nil)
-        // TODO: change VC class
-        let vc = storyboard.instantiateViewControllerWithIdentifier("cameraVC") as UIViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("cameraVC") as CameraVC
         presentViewController(vc, animated: true, completion: nil)
         
     }

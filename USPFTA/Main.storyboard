@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FrH-HG-B5e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lib-Uf-XSr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -54,7 +54,7 @@
         <!--ResultsVC-->
         <scene sceneID="81h-ZW-xO3">
             <objects>
-                <viewController id="lib-Uf-XSr" customClass="ResultsVC" customModule="USPFTA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultsVC" id="lib-Uf-XSr" customClass="ResultsVC" customModule="USPFTA" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="92Q-Ie-tzo"/>
                         <viewControllerLayoutGuide type="bottom" id="IQj-Kh-xnT"/>
@@ -76,8 +76,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for game to begin..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmw-BM-dob">
+                                <rect key="frame" x="194" y="20" width="212" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Dgg-Zc-weH"/>
+                                    <constraint firstAttribute="width" constant="212" id="pET-U5-vTU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Mmw-BM-dob" secondAttribute="centerX" id="KIW-hM-Pmo"/>
+                            <constraint firstItem="Mmw-BM-dob" firstAttribute="top" secondItem="92Q-Ie-tzo" secondAttribute="bottom" id="viC-tH-yYk"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMQ-SX-C1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,7 +110,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmz-jF-zQx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type objective above, then long press to place your flag" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qar-m8-75a">
+                                <rect key="frame" x="16" y="536" width="568" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="NIc-fF-DeD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Flag objective" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfs-qW-SRM">
+                                <rect key="frame" x="16" y="20" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ras-5Q-ez5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmz-jF-zQx">
                                 <rect key="frame" x="16" y="536" width="568" height="44"/>
                                 <color key="backgroundColor" red="0.10153489559999999" green="0.6349509954" blue="0.15632745619999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -111,21 +142,16 @@
                                     <segue destination="BqU-Xa-22B" kind="show" id="jpW-gK-9tF"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Flag objective" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfs-qW-SRM">
-                                <rect key="frame" x="16" y="20" width="568" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ras-5Q-ez5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0xl-MI-Ynb">
                                 <rect key="frame" x="0.0" y="58" width="600" height="470"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qar-m8-75a" firstAttribute="trailing" secondItem="qXf-yd-AXM" secondAttribute="trailingMargin" id="0Z3-V4-N9N"/>
+                            <constraint firstItem="qar-m8-75a" firstAttribute="leading" secondItem="qXf-yd-AXM" secondAttribute="leadingMargin" id="1vd-pr-9Gh"/>
                             <constraint firstItem="sfs-qW-SRM" firstAttribute="top" secondItem="WWb-wI-HMM" secondAttribute="bottom" id="4fO-Zj-0W6"/>
+                            <constraint firstItem="Hgy-nj-1z1" firstAttribute="top" secondItem="qar-m8-75a" secondAttribute="bottom" constant="20" id="DrX-RY-YGy"/>
                             <constraint firstItem="Hgy-nj-1z1" firstAttribute="top" secondItem="Vmz-jF-zQx" secondAttribute="bottom" constant="20" id="J6Y-ch-tZW"/>
                             <constraint firstItem="0xl-MI-Ynb" firstAttribute="leading" secondItem="qXf-yd-AXM" secondAttribute="leadingMargin" constant="-16" id="Kas-OR-voK"/>
                             <constraint firstItem="Vmz-jF-zQx" firstAttribute="trailing" secondItem="qXf-yd-AXM" secondAttribute="trailingMargin" id="LJ3-RW-Mdh"/>
@@ -162,7 +188,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MAe-nx-VdK">
                                 <rect key="frame" x="0.0" y="20" width="600" height="508"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQg-H7-8le">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQg-H7-8le">
                                 <rect key="frame" x="272" y="536" width="56" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="FWb-7g-sYK"/>

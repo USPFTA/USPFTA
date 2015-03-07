@@ -21,11 +21,11 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
         // FIXME: add search from Rails
         api.obtainGameResults("")
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // TODO: add listener for new game
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // once new game is returned, display alert that will lead to DropFlagVC
+        
+        
     }
     
     func didReceiveAPIResults(results: NSDictionary) {
@@ -35,15 +35,6 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
             self.resultsData = resultsArr
             self.resultsTableView!.reloadData()
         })
-    }
-    
-    
-    override func didReceiveMemoryWarning()
-    {
-        
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
     }
     
     // MARK: - Table view data source
