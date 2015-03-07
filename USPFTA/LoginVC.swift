@@ -48,6 +48,16 @@ class LoginViewController: UIViewController {
             // all fields are filled in, sign up user (DO WE NEED TO CHECK FOR EXISTING USER? / HOW DO WE HANDLE ERRORS?)
             println("Sign up btn pressed, getting user token...")
             
+            User.currentUser().register(usernameTextField.text, email: emailTextField.text, password: passwordTextField.text)
+            
+            // TODO: authentication
+            
+            // TODO: change this to presenting the PreviousGamesVC
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("dropFlagVC") as DropFlagVC
+            presentViewController(vc, animated: true, completion: nil)
+            
 //            User.currentUser().getUserToken(fieldValues[2], andEmail: fieldValues[0], andPassword: fieldValues[1], andCompletion: { () -> () in
 //                
 //                // dismiss view controller when finished
@@ -94,12 +104,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func logInUser(sender: AnyObject) {
-        // log in user
-        
-        
-        //        User.currentUser().logInUser(emailTextField.text, andPassword: passwordTextField.text)
-        
-        
         
         var fieldValues: [String] = [emailTextField.text, passwordTextField.text]
         
@@ -121,6 +125,16 @@ class LoginViewController: UIViewController {
             println("Login btn pressed, attempting to login user...")
             //            User.currentUser().logInUser(fieldValues[0], andPassword: fieldValues[1])
             
+            User.currentUser().signIn(emailTextField.text, password: passwordTextField.text)
+            
+            // TODO: authentication
+            
+            // TODO: change this to presenting the PreviousGamesVC
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("dropFlagVC") as DropFlagVC
+            presentViewController(vc, animated: true, completion: nil)
+            
 //            User.currentUser().logInUser(fieldValues[0], andPassword: fieldValues[1], andCompletion: { () -> () in
 //                
 //                // dismiss view controller when finished
@@ -131,22 +145,5 @@ class LoginViewController: UIViewController {
         }
         
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

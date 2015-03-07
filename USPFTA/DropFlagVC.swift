@@ -15,6 +15,7 @@ var userFlagCoords:CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
 
 class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var objectiveTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var beginButton: UIButton!
     
@@ -45,6 +46,11 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         let circle = MKCircle(centerCoordinate: geofenceCoord, radius: geofenceRadius)
         mapView.addOverlay(circle)
         
+        // center and zoom map
+        let circleRegion = MKCoordinateRegionMakeWithDistance(geofenceCoord, geofenceRadius * 4, geofenceRadius * 4)
+        let adjustedRegion = mapView.regionThatFits(circleRegion)
+        mapView.setRegion(adjustedRegion, animated: true)
+        
     }
     
     func dropFlag(gestureRecognizer: UIGestureRecognizer) {
@@ -64,30 +70,32 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         annotation.coordinate = touchMapCoord
         annotation.title = "Your Flag"
         
+        println(touchMapCoord.latitude)
+        println(touchMapCoord.longitude)
+        
         flagAnnotation = annotation
         mapView.addAnnotation(annotation)
         userFlagCoords = touchMapCoord
         
         // TODO: only show button when *both* the textfield is filled out and the flag is dropped. this status will need to be checked in two places
-        beginButton.hidden = false
+        if (objectiveTextField.text != "" && flagAnnotation != nil) {
+            beginButton.hidden = false
+        }
         
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    // hide callout of user location
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         
-        // TODO: set region to geofence
-        let spanX = 0.05
-        let spanY = 0.05
-        var newRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
-        mapView.setRegion(newRegion, animated: true)
+        userLocation.title = ""
         
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if overlay is MKCircle {
             var circle = MKCircleRenderer(overlay: overlay)
-            circle.strokeColor = UIColor.redColor()
-            circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
+            circle.strokeColor = UIColor(red:0, green:0.6, blue:0, alpha:1)
+            circle.fillColor = UIColor(red:0, green:0.6, blue:0, alpha:0.1)
             circle.lineWidth = 1
             return circle
         } else {

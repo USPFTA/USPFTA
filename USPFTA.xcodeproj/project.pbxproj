@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC29D8731AAB32D600BB15D6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC29D8721AAB32D600BB15D6 /* API.swift */; };
+		EC29D8751AAB466A00BB15D6 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC29D8741AAB466A00BB15D6 /* GameVC.swift */; };
 		EC5315411AAA8CB30077A14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5315401AAA8CB30077A14A /* AppDelegate.swift */; };
 		EC5315431AAA8CB30077A14A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5315421AAA8CB30077A14A /* ViewController.swift */; };
 		EC5315481AAA8CB30077A14A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5315471AAA8CB30077A14A /* Images.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC29D8721AAB32D600BB15D6 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		EC29D8741AAB466A00BB15D6 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		EC53153B1AAA8CB30077A14A /* USPFTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USPFTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC53153F1AAA8CB30077A14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5315401AAA8CB30077A14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC29D86F1AAB323400BB15D6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EC29D8721AAB32D600BB15D6 /* API.swift */,
+				EC5315681AAA92E80077A14A /* CustomButton.swift */,
+				EC5315661AAA928A0077A14A /* LoginVC.swift */,
+				EC5315601AAA8CE00077A14A /* Login.storyboard */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		EC5315321AAA8CB30077A14A = {
 			isa = PBXGroup;
 			children = (
@@ -85,16 +100,12 @@
 		EC53153D1AAA8CB30077A14A /* USPFTA */ = {
 			isa = PBXGroup;
 			children = (
-				EC5315681AAA92E80077A14A /* CustomButton.swift */,
-				EC5315401AAA8CB30077A14A /* AppDelegate.swift */,
+				EC29D86F1AAB323400BB15D6 /* Login */,
 				EC53156A1AAA93C10077A14A /* DropFlagVC.swift */,
+				EC29D8741AAB466A00BB15D6 /* GameVC.swift */,
 				EC5315421AAA8CB30077A14A /* ViewController.swift */,
-				EC5315471AAA8CB30077A14A /* Images.xcassets */,
-				EC5315491AAA8CB30077A14A /* LaunchScreen.xib */,
 				EC5315621AAA8EE00077A14A /* Main.storyboard */,
-				EC5315601AAA8CE00077A14A /* Login.storyboard */,
 				EC53153E1AAA8CB30077A14A /* Supporting Files */,
-				EC5315661AAA928A0077A14A /* LoginVC.swift */,
 			);
 			path = USPFTA;
 			sourceTree = "<group>";
@@ -102,6 +113,9 @@
 		EC53153E1AAA8CB30077A14A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EC5315401AAA8CB30077A14A /* AppDelegate.swift */,
+				EC5315471AAA8CB30077A14A /* Images.xcassets */,
+				EC5315491AAA8CB30077A14A /* LaunchScreen.xib */,
 				EC53153F1AAA8CB30077A14A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -246,6 +260,8 @@
 				EC5315411AAA8CB30077A14A /* AppDelegate.swift in Sources */,
 				EC5315671AAA928A0077A14A /* LoginVC.swift in Sources */,
 				EC5315691AAA92E80077A14A /* CustomButton.swift in Sources */,
+				EC29D8751AAB466A00BB15D6 /* GameVC.swift in Sources */,
+				EC29D8731AAB32D600BB15D6 /* API.swift in Sources */,
 				EC53156B1AAA93C10077A14A /* DropFlagVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
