@@ -26,6 +26,12 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // local notifications
+        // TODO: move this somewhere else, possibly
+        let notificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        let notificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
         beginButton.hidden = true
 
         mapView.delegate = self
@@ -82,6 +88,11 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             beginButton.hidden = false
         }
         
+    }
+    
+    // minimize keyboard on tap outside
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        view.endEditing(true)
     }
     
     // hide callout of user location

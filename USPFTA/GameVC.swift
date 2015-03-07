@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+let proximity:Double = 400 // meters
+
 class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     let sampleData: [[String:AnyObject]] = [ // other players' flags
@@ -26,6 +28,7 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var manager:CLLocationManager!
+    var userLocation:CLLocation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +66,22 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     }
     
+    // hide callout of user location
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        
+        userLocation.title = ""
+        
+    }
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        if let userLoc = userLocation {
+            
+            if annotation.coordinate.latitude == userLoc.coordinate.latitude && annotation.coordinate.longitude == userLoc.coordinate.longitude {
+                return nil
+            }
+            
+        }
         
         // only run this code if it's a pin--not the circle
         if annotation.coordinate.latitude == geofenceCoord.latitude && annotation.coordinate.longitude == geofenceCoord.longitude {
@@ -93,14 +111,34 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         }
     }
     
-//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-//        
-//        let spanX = 0.007
-//        let spanY = 0.007
-//        var newRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
-//        mapView.setRegion(newRegion, animated: true)
-//        
-//    }
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        
+        // TODO: don't check this every second, but only once the user has moved a certain distance
+        
+        userLocation = locations[0] as CLLocation
+        
+        for location in sampleData as [[String:AnyObject]] {
+            
+            let latitude = location["latitude"] as CLLocationDegrees
+            let longitude = location["longitude"] as CLLocationDegrees
+            let flagLocation = CLLocation(latitude: latitude, longitude: longitude)
+            
+            if userLocation.distanceFromLocation(flagLocation) < proximity {
+                
+                let notification = UILocalNotification()
+                notification.fireDate = nil
+                notification.alertBody = "You are near a flag."
+                //            notification.alertAction = "View List"
+                //            notification.soundName = "Glass.aiff"
+                
+                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+                
+                
+            }
+            
+        }
+        
+    }
     
 
     /*
@@ -112,5 +150,14 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func takePhoto(sender: AnyObject) {
+        
+        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+        // TODO: change VC class
+        let vc = storyboard.instantiateViewControllerWithIdentifier("cameraVC") as UIViewController
+        presentViewController(vc, animated: true, completion: nil)
+        
+    }
 
 }
