@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		EC5315411AAA8CB30077A14A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5315401AAA8CB30077A14A /* AppDelegate.swift */; };
 		EC5315431AAA8CB30077A14A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5315421AAA8CB30077A14A /* ViewController.swift */; };
-		EC5315461AAA8CB30077A14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5315441AAA8CB30077A14A /* Main.storyboard */; };
 		EC5315481AAA8CB30077A14A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5315471AAA8CB30077A14A /* Images.xcassets */; };
 		EC53154B1AAA8CB30077A14A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC5315491AAA8CB30077A14A /* LaunchScreen.xib */; };
 		EC5315571AAA8CB30077A14A /* USPFTATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5315561AAA8CB30077A14A /* USPFTATests.swift */; };
+		EC5315611AAA8CE00077A14A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5315601AAA8CE00077A14A /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +30,12 @@
 		EC53153F1AAA8CB30077A14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5315401AAA8CB30077A14A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC5315421AAA8CB30077A14A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EC5315451AAA8CB30077A14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC5315471AAA8CB30077A14A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EC53154A1AAA8CB30077A14A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EC5315501AAA8CB30077A14A /* USPFTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = USPFTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5315551AAA8CB30077A14A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5315561AAA8CB30077A14A /* USPFTATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USPFTATests.swift; sourceTree = "<group>"; };
+		EC5315601AAA8CE00077A14A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +79,9 @@
 			children = (
 				EC5315401AAA8CB30077A14A /* AppDelegate.swift */,
 				EC5315421AAA8CB30077A14A /* ViewController.swift */,
-				EC5315441AAA8CB30077A14A /* Main.storyboard */,
 				EC5315471AAA8CB30077A14A /* Images.xcassets */,
 				EC5315491AAA8CB30077A14A /* LaunchScreen.xib */,
+				EC5315601AAA8CE00077A14A /* Main.storyboard */,
 				EC53153E1AAA8CB30077A14A /* Supporting Files */,
 			);
 			path = USPFTA;
@@ -192,7 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC5315461AAA8CB30077A14A /* Main.storyboard in Resources */,
+				EC5315611AAA8CE00077A14A /* Main.storyboard in Resources */,
 				EC53154B1AAA8CB30077A14A /* LaunchScreen.xib in Resources */,
 				EC5315481AAA8CB30077A14A /* Images.xcassets in Resources */,
 			);
@@ -236,14 +236,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EC5315441AAA8CB30077A14A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC5315451AAA8CB30077A14A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EC5315491AAA8CB30077A14A /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
