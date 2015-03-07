@@ -88,7 +88,6 @@
 		EC29D86F1AAB323400BB15D6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				EC29D8721AAB32D600BB15D6 /* API.swift */,
 				EC5315681AAA92E80077A14A /* CustomButton.swift */,
 				EC5315661AAA928A0077A14A /* LoginVC.swift */,
 				EC5315601AAA8CE00077A14A /* Login.storyboard */,
@@ -130,6 +129,7 @@
 		EC53153D1AAA8CB30077A14A /* USPFTA */ = {
 			isa = PBXGroup;
 			children = (
+				EC29D8721AAB32D600BB15D6 /* API.swift */,
 				EC29D86F1AAB323400BB15D6 /* Login */,
 				EC29D87C1AAB55B300BB15D6 /* GameVCs */,
 				EC2887851AAB811200FF017B /* Camera */,

@@ -27,12 +27,6 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // local notifications
-        // TODO: move this somewhere else, possibly
-        let notificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Sound
-        let notificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        
         beginButton.hidden = true
 
         mapView.delegate = self
@@ -80,7 +74,7 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         println(touchMapCoord.latitude)
         println(touchMapCoord.longitude)
         
-        // TODO: alert user if flag is outside geofence
+        // alert user if flag is outside geofence
         let touchMapLocation = CLLocation(latitude: touchMapCoord.latitude, longitude: touchMapCoord.longitude)
         let geofenceCenter = CLLocation(latitude: geofenceCoord.latitude, longitude: geofenceCoord.longitude)
         if touchMapLocation.distanceFromLocation(geofenceCenter) <= geofenceRadius {
@@ -89,7 +83,7 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             mapView.addAnnotation(annotation)
             userFlagCoords = touchMapCoord
             
-            // TODO: only show button when *both* the textfield is filled out and the flag is dropped. this status will need to be checked in two places
+            // only show button when *both* the textfield is filled out and the flag is dropped
             if (objectiveTextField.text != "" && flagAnnotation != nil) {
                 beginButton.hidden = false
             }
@@ -100,15 +94,6 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             displayGeofenceAlert()
             
         }
-        
-    }
-    
-    func displayGeofenceAlert() {
-        
-        let alertController = UIAlertController(title: "Tap location is outside range. Please place a flag within the playing field.", message: nil, preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(OKAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     
@@ -152,7 +137,7 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         view.endEditing(true)
         
-        // TODO: only show button when *both* the textfield is filled out and the flag is dropped. this status will need to be checked in two places
+        // only show button when *both* the textfield is filled out and the flag is dropped
         if (objectiveTextField.text != "" && flagAnnotation != nil) {
             beginButton.hidden = false
         }
@@ -163,6 +148,16 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         
         // double-check that they have both a flag and text
         // probably a job for back-end
+        
+    }
+    
+    // MARK: Alerts
+    func displayGeofenceAlert() {
+        
+        let alertController = UIAlertController(title: "Tap location is outside range. Please place a flag within the playing field.", message: nil, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(OKAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     

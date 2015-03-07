@@ -52,10 +52,8 @@ class LoginViewController: UIViewController {
             
             // TODO: authentication
             
-            // TODO: change this to presenting the PreviousGamesVC
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("dropFlagVC") as DropFlagVC
+            let vc = storyboard.instantiateViewControllerWithIdentifier("resultsVC") as ResultsVC
             presentViewController(vc, animated: true, completion: nil)
             
 //            User.currentUser().getUserToken(fieldValues[2], andEmail: fieldValues[0], andPassword: fieldValues[1], andCompletion: { () -> () in
@@ -132,7 +130,7 @@ class LoginViewController: UIViewController {
             // TODO: change this to presenting the PreviousGamesVC
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("dropFlagVC") as DropFlagVC
+            let vc = storyboard.instantiateViewControllerWithIdentifier("resultsVC") as ResultsVC
             presentViewController(vc, animated: true, completion: nil)
             
 //            User.currentUser().logInUser(fieldValues[0], andPassword: fieldValues[1], andCompletion: { () -> () in

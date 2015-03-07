@@ -135,6 +135,7 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
+    // MARK: Alerts
     func displayProximityAlert(location: [String:AnyObject], index: Int) {
         
         let objective = location["objective"] as String
@@ -153,7 +154,6 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             
             let storyboard = UIStoryboard(name: "Camera", bundle: nil)
-            // TODO: change VC class
             let vc = storyboard.instantiateViewControllerWithIdentifier("cameraVC") as CameraVC
             
             // pass flag data on to VC

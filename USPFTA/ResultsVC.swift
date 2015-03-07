@@ -21,11 +21,18 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
         // FIXME: add search from Rails
         api.obtainGameResults("")
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+
         // TODO: add listener for new game
+        // TODO: make listener listen repeatedly
         
-        // once new game is returned, display alert that will lead to DropFlagVC
-        
-        
+        User.currentUser().getInvitations(User.currentUser().id)
+
+//        // once new game is returned, display alert that will lead to DropFlagVC
+//        displayNewGameAlert()
     }
     
     func didReceiveAPIResults(results: NSDictionary) {
@@ -63,6 +70,37 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
 //        cell.textLabel.text = rowData[""] as? String
         
         return cell
+    }
+    
+    // MARK: Alerts
+    func displayNewGameAlert() {
+        
+        let alertController = UIAlertController(title: "New Game", message: "Would you like to accept?", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
+
+            // Rails: cancel invitation
+
+        }
+
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+            
+            // TODO: pass data on to VC
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc = storyboard.instantiateViewControllerWithIdentifier("dropFlagVC") as DropFlagVC
+            
+            self.presentViewController(vc, animated: true, completion: nil)
+            
+        }
+        
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
     
     
