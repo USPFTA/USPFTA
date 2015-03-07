@@ -20,6 +20,8 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     
     var manager:CLLocationManager!
     
+    var flagAnnotation:MKAnnotation!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +38,8 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         mapView.showsUserLocation = true
         
         var lpgr = UILongPressGestureRecognizer(target: self, action: "dropFlag:")
-        lpgr.minimumPressDuration = 2
+        // TODO: play around with duration
+        lpgr.minimumPressDuration = 1
         mapView.addGestureRecognizer(lpgr)
         
         let circle = MKCircle(centerCoordinate: geofenceCoord, radius: geofenceRadius)
@@ -45,25 +48,28 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     }
     
     func dropFlag(gestureRecognizer: UIGestureRecognizer) {
-        
-        println("dropFlag")
-        
+                
         if gestureRecognizer.state != UIGestureRecognizerState.Began {
             return
         }
-    
+        
+        // remove previous flags from map and data
+        if let flagAnn = flagAnnotation {
+            mapView.removeAnnotation(flagAnnotation)
+        }
+            
         let touchPoint = gestureRecognizer.locationInView(self.mapView) // self?
         let touchMapCoord:CLLocationCoordinate2D = mapView.convertPoint(touchPoint, toCoordinateFromView: self.mapView) // self?
         var annotation = MKPointAnnotation()
         annotation.coordinate = touchMapCoord
         annotation.title = "Your Flag"
         
+        flagAnnotation = annotation
         mapView.addAnnotation(annotation)
         userFlagCoords = touchMapCoord
         
+        // TODO: only show button when *both* the textfield is filled out and the flag is dropped. this status will need to be checked in two places
         beginButton.hidden = false
-        
-        println("flag dropped")
         
     }
     
@@ -88,10 +94,28 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             return nil
         }
     }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        // only run this code if it's a pin--not the circle
+        if annotation.coordinate.latitude == geofenceCoord.latitude && annotation.coordinate.longitude == geofenceCoord.longitude {
+            return nil
+        } else {
+            
+            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            annotationView.image = UIImage(named: "flag")
+            annotationView.annotation = annotation
+            
+            return annotationView
+            
+        }
+        
+    }
 
     @IBAction func beginGame(sender: AnyObject) {
         
-        
+        // double-check that they have both a flag and text
+        // probably a job for back-end
         
     }
     

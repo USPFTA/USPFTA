@@ -134,6 +134,7 @@
 				EC5315371AAA8CB30077A14A /* Sources */,
 				EC5315381AAA8CB30077A14A /* Frameworks */,
 				EC5315391AAA8CB30077A14A /* Resources */,
+				EC29D86E1AAAB03500BB15D6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -219,6 +220,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EC29D86E1AAAB03500BB15D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC5315371AAA8CB30077A14A /* Sources */ = {
@@ -413,6 +430,7 @@
 				EC53155C1AAA8CB30077A14A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC53155D1AAA8CB30077A14A /* Build configuration list for PBXNativeTarget "USPFTATests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +439,7 @@
 				EC53155F1AAA8CB30077A14A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
