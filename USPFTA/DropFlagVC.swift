@@ -183,6 +183,9 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         
         // double-check that they have both a flag and text
         // probably a job for back-end
+        let userFlagLat = userFlagCoords.latitude
+        let userFlagLon = userFlagCoords.longitude
+        User.currentUser().placeFlag(objectiveTextField.text, lat: userFlagLat, lon: userFlagLon)
         
     }
     
@@ -195,15 +198,5 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         self.presentViewController(alertController, animated: true, completion: nil)
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

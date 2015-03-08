@@ -15,10 +15,13 @@ private let _currentUser = User()
 class User {
     
     var id = 6 // FIXME: change this later, by using NSUserDefaults
+    var gameID = 0
     
     var invitations: [[String:AnyObject]] = [[:]]
     
     var currentGame: [String:AnyObject] = [:]
+    
+    var gameFlags: [[String:AnyObject]] = [[:]]
     
     var token: String? {
         
@@ -138,17 +141,17 @@ class User {
         let invitation = invitations[0]
         let inviter_id = invitation["inviter_id"] as Int
         let invited_id = invitation["invited_id"] as Int
-        let game_id = invitation["game_id"] as Int
+        self.gameID = invitation["game_id"] as Int
         let invitation_id = invitation["id"] as Int
         
-        println("\(inviter_id), \(invited_id), \(game_id), \(invitation_id)")
+        println("\(inviter_id), \(invited_id), \(self.gameID), \(invitation_id)")
         
         let options: [String:AnyObject] = [
             "endpoint" : "invitations/\(invitation_id)/accept",
             "method" : "POST",
             "body" : [
                 
-                "invitation" : ["inviter_id" : inviter_id, "invited_id" : invited_id, "game_id" : game_id]
+                "invitation" : ["inviter_id" : inviter_id, "invited_id" : invited_id, "game_id" : self.gameID]
                 
             ]
             
@@ -176,8 +179,6 @@ class User {
                 defaults.setObject(endTime, forKey: "currentGameEndTime")
                 defaults.setObject(radius, forKey: "currentGameRadius")
                 defaults.synchronize()
-                let currentGameLat = defaults.objectForKey("currentGameLat") as? String
-                println("NSUserDefaults test: \(currentGameLat)")
                 
             }
             
@@ -240,6 +241,55 @@ class User {
             
             // call getInvitations
 //            self.getInvitations(id)
+            
+        })
+        
+    }
+    
+    func placeFlag(objective: String, lat: Double, lon: Double) {
+        
+        let options: [String:AnyObject] = [
+            "endpoint" : "flags",
+            "method" : "POST",
+            "body" : [
+                
+                "flag": [ "name" : objective, "flag_lat" : lat, "flag_long" : lon ]
+                
+            ]
+            
+        ]
+        
+        APIRequest.requestWithOptions(options, andCompletion: { (responseInfo) -> () in
+            
+            // set token
+            println(responseInfo)
+            
+        })
+    }
+    
+    func listFlags() {
+        
+        let options: [String:AnyObject] = [
+            "endpoint" : "games/\(self.gameID)",
+            "method" : "GET"
+//            "body" : [
+//                
+//                "flag": [ "name" : objective, "flag_lat" : lat, "flag_long" : lon ]
+//                
+//            ]
+            
+        ]
+        
+        APIRequest.requestWithOptions(options, andCompletion: { (responseInfo) -> () in
+            
+            println(responseInfo)
+            
+            if let dataInfo = responseInfo["flags"] as? [[String:AnyObject]] {
+                
+                println(dataInfo)
+                self.gameFlags = dataInfo
+                
+            }
             
         })
         

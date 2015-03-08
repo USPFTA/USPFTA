@@ -13,6 +13,8 @@ let proximity:Double = 400 // meters
 
 class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+//    var flags: [[String:AnyObject]] = [[:]]
+    
     var sampleData: [[String:AnyObject]] = [ // other players' flags
         ["latitude": 33.7586630800343, "longitude": -84.3826462453672, "objective": "Photo"],
         ["latitude": 33.7566878966899, "longitude": -84.3937825443492, "objective": "Audio"],
@@ -41,6 +43,22 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
+
+    }
+    
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(true)
+//        
+//        User.currentUser().listFlags()
+//        
+//        flags = User.currentUser().gameFlags
+//        
+//    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        println("test")
         
         let circle = MKCircle(centerCoordinate: geofenceCoord, radius: geofenceRadius)
         mapView.addOverlay(circle)
@@ -52,20 +70,26 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         // add flags to map
         addFlags()
-
+        
     }
     
     func addFlags() {
         
         for location in sampleData as [[String:AnyObject]] {
             
+            println(location)
+            
             let annotation = MKPointAnnotation()
-            let latitude = location["latitude"] as CLLocationDegrees
-            let longitude = location["longitude"] as CLLocationDegrees
-            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-            annotation.coordinate = coordinate
-            annotation.title = location["objective"] as String
-            mapView.addAnnotation(annotation)
+            // convert to Double
+//            let latDouble = location["flag_lat"] as Double
+//            let lonDouble = location["flag_long"] as Double
+//            let latitude = latDouble as CLLocationDegrees
+//            let longitude = lonDouble as CLLocationDegrees
+//            let
+//            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+//            annotation.coordinate = coordinate
+//            annotation.title = location["objective"] as String
+//            mapView.addAnnotation(annotation)
             
         }
         
