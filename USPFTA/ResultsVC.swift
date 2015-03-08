@@ -38,6 +38,7 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
         
         // FIXME: change this (and above) to a completion
         
+        // FIXME: [invitations: <null>] still has a count > 0
         // once new game is returned, display alert that will lead to DropFlagVC
         if User.currentUser().invitations.count > 0 {
             

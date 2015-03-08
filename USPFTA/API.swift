@@ -18,6 +18,8 @@ class User {
     
     var invitations: [[String:AnyObject]] = [[:]]
     
+    var currentGame: [String:AnyObject] = [:]
+    
     var token: String? {
         
         didSet {
@@ -142,12 +144,11 @@ class User {
         println("\(inviter_id), \(invited_id), \(game_id), \(invitation_id)")
         
         let options: [String:AnyObject] = [
-            "endpoint" : "invitations/2/accept",
+            "endpoint" : "invitations/\(invitation_id)/accept",
             "method" : "POST",
             "body" : [
                 
                 "invitation" : ["inviter_id" : inviter_id, "invited_id" : invited_id, "game_id" : game_id]
-                //                "invitation" : id
                 
             ]
             
@@ -158,6 +159,12 @@ class User {
             // set token
             println("response")
             println(responseInfo)
+            
+            if let dataInfo = responseInfo["game"] as? [String:AnyObject] {
+                
+                self.currentGame = dataInfo
+                
+            }
             
 //            if let dataInfo = responseInfo["user"] as? [String:AnyObject] {
 //                
@@ -194,7 +201,6 @@ class User {
             "body" : [
                 
                 "invitation" : ["inviter_id" : inviter_id, "invited_id" : invited_id, "game_id" : game_id]
-//                "invitation" : id
                 
             ]
             
@@ -236,11 +242,6 @@ class APIRequest {
         
             "endpoint" : endpoint,
             "method" : method
-//            "body" : [
-//            
-//                "user" : ["authentication_token" : User.currentUser().token!]
-//            
-//            ]
             
         ] as [String:AnyObject]
         

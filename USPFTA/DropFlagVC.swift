@@ -9,8 +9,13 @@
 import UIKit
 import MapKit
 
-let geofenceRadius = 1609 as CLLocationDistance
-let geofenceCoord = CLLocationCoordinate2DMake(33.7518732, -84.3914068)
+var gameRadius:Double = 0
+var geofenceRadius:CLLocationDistance = 0
+var geofenceLat:CLLocationDegrees = 0
+var geofenceLon:CLLocationDegrees = 0
+var geofenceCoord = CLLocationCoordinate2DMake(geofenceLat, geofenceLon)
+
+//let geofenceCoord = CLLocationCoordinate2DMake(33.7518732, -84.3914068)
 var userFlagCoords:CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
 
 class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
@@ -51,6 +56,21 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         let circleRegion = MKCoordinateRegionMakeWithDistance(geofenceCoord, geofenceRadius * 4, geofenceRadius * 4)
         let adjustedRegion = mapView.regionThatFits(circleRegion)
         mapView.setRegion(adjustedRegion, animated: true)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        // FIXME: these all could be nil
+        if User.currentUser().currentGame.isEmpty {
+            println("current game empty")
+        } else {
+            gameRadius = User.currentUser().currentGame["radius"] as Double
+            geofenceRadius = Double(ceil(gameRadius * 1609)) as CLLocationDistance
+            geofenceLat = User.currentUser().currentGame["center_lat"] as CLLocationDegrees
+            geofenceLon = User.currentUser().currentGame["center_long"] as CLLocationDegrees
+            geofenceCoord = CLLocationCoordinate2DMake(geofenceLat, geofenceLon)
+        }
         
     }
     
