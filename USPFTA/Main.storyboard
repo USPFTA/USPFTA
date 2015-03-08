@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lib-Uf-XSr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FrH-HG-B5e">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -76,8 +76,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ppT-Bc-R64">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="C7f-qE-886">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mcR-5Z-Ogn">
+                                            <connections>
+                                                <segue destination="yRf-cv-MnR" kind="presentation" id="YWI-tm-0bg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for game to begin..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmw-BM-dob">
-                                <rect key="frame" x="194" y="20" width="212" height="21"/>
+                                <rect key="frame" x="194" y="78" width="212" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Dgg-Zc-weH"/>
                                     <constraint firstAttribute="width" constant="212" id="pET-U5-vTU"/>
@@ -90,7 +102,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Mmw-BM-dob" secondAttribute="centerX" id="KIW-hM-Pmo"/>
-                            <constraint firstItem="Mmw-BM-dob" firstAttribute="top" secondItem="92Q-Ie-tzo" secondAttribute="bottom" id="viC-tH-yYk"/>
+                            <constraint firstItem="Mmw-BM-dob" firstAttribute="top" secondItem="92Q-Ie-tzo" secondAttribute="bottom" constant="58" id="viC-tH-yYk"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -240,6 +252,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gr7-hW-jR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-172" y="324"/>
+        </scene>
+        <!--WebVC-->
+        <scene sceneID="p2p-DX-JIX">
+            <objects>
+                <viewController id="yRf-cv-MnR" customClass="WebVC" customModule="USPFTA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sks-BB-ZXM"/>
+                        <viewControllerLayoutGuide type="bottom" id="KIZ-OZ-QkS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zZI-Rh-P8L">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="da7-ay-WNw">
+                                <rect key="frame" x="0.0" y="42" width="600" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="da7-ay-WNw" secondAttribute="centerY" id="KGA-12-qtr"/>
+                            <constraint firstItem="da7-ay-WNw" firstAttribute="top" secondItem="Sks-BB-ZXM" secondAttribute="bottom" constant="22" id="Sef-4B-7c2"/>
+                            <constraint firstItem="da7-ay-WNw" firstAttribute="leading" secondItem="zZI-Rh-P8L" secondAttribute="leading" id="UVd-dv-rhT"/>
+                            <constraint firstAttribute="trailing" secondItem="da7-ay-WNw" secondAttribute="trailing" id="a7w-Qr-qgK"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="da7-ay-WNw" secondAttribute="bottom" constant="-60" id="iZh-S8-fCu"/>
+                            <constraint firstAttribute="centerX" secondItem="da7-ay-WNw" secondAttribute="centerX" id="kTR-gb-Z5n"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KGA-12-qtr"/>
+                                <exclude reference="kTR-gb-Z5n"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="da7-ay-WNw" id="2Yb-TK-iD2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GrB-u0-s3N" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2002" y="329"/>
         </scene>
     </scenes>
 </document>

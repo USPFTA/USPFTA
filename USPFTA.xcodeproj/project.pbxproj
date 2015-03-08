@@ -23,6 +23,7 @@
 		EC5315671AAA928A0077A14A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5315661AAA928A0077A14A /* LoginVC.swift */; };
 		EC5315691AAA92E80077A14A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5315681AAA92E80077A14A /* CustomButton.swift */; };
 		EC53156B1AAA93C10077A14A /* DropFlagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53156A1AAA93C10077A14A /* DropFlagVC.swift */; };
+		EC815D9E1AAC90FA004537E0 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC815D9D1AAC90FA004537E0 /* WebVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		EC5315661AAA928A0077A14A /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		EC5315681AAA92E80077A14A /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		EC53156A1AAA93C10077A14A /* DropFlagVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropFlagVC.swift; sourceTree = "<group>"; };
+		EC815D9D1AAC90FA004537E0 /* WebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				EC29D8741AAB466A00BB15D6 /* GameVC.swift */,
 				EC29D8781AAB526400BB15D6 /* APIControllerProtocol.swift */,
 				EC29D8761AAB51AD00BB15D6 /* ResultsVC.swift */,
+				EC815D9D1AAC90FA004537E0 /* WebVC.swift */,
 				EC5315621AAA8EE00077A14A /* Main.storyboard */,
 			);
 			name = GameVCs;
@@ -293,6 +296,7 @@
 				EC29D8791AAB526400BB15D6 /* APIControllerProtocol.swift in Sources */,
 				EC29D8751AAB466A00BB15D6 /* GameVC.swift in Sources */,
 				EC29D8771AAB51AD00BB15D6 /* ResultsVC.swift in Sources */,
+				EC815D9E1AAC90FA004537E0 /* WebVC.swift in Sources */,
 				EC29D8731AAB32D600BB15D6 /* API.swift in Sources */,
 				EC53156B1AAA93C10077A14A /* DropFlagVC.swift in Sources */,
 			);

@@ -157,12 +157,27 @@ class User {
         APIRequest.requestWithOptions(options, andCompletion: { (responseInfo) -> () in
             
             // set token
-            println("response")
-            println(responseInfo)
+//            println("response")
+//            println(responseInfo)
             
             if let dataInfo = responseInfo["game"] as? [String:AnyObject] {
                 
+                println(dataInfo)
+                
                 self.currentGame = dataInfo
+                // save to NSUserDefaults
+                let defaults = NSUserDefaults.standardUserDefaults()
+                let lat:String = dataInfo["center_lat"] as String
+                let lon:String = dataInfo["center_long"] as String
+                let endTime:String = dataInfo["ends_at"] as String
+                let radius:String = dataInfo["radius"] as String
+                defaults.setObject(lat, forKey: "currentGameLat")
+                defaults.setObject(lon, forKey: "currentGameLon")
+                defaults.setObject(endTime, forKey: "currentGameEndTime")
+                defaults.setObject(radius, forKey: "currentGameRadius")
+                defaults.synchronize()
+                let currentGameLat = defaults.objectForKey("currentGameLat") as? String
+                println("NSUserDefaults test: \(currentGameLat)")
                 
             }
             

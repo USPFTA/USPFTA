@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+var currentGame:[String:AnyObject] = [:]
+
 var gameRadius:Double = 0
 var geofenceRadius:CLLocationDistance = 0
 var geofenceLat:CLLocationDegrees = 0
@@ -49,6 +51,34 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         lpgr.minimumPressDuration = 1
         mapView.addGestureRecognizer(lpgr)
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        let currentGame = User.currentUser().currentGame
+        println(currentGame)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        println("test")
+        
+        let lat = defaults.objectForKey("currentGameLat") as String
+        println(lat)
+        let latDouble = (lat as NSString).doubleValue
+        let lon = defaults.objectForKey("currentGameLon") as String
+        let lonDouble = (lon as NSString).doubleValue
+        let radius = defaults.objectForKey("currentGameRadius") as String
+        let radiusDouble = (radius as NSString).doubleValue
+        let endTime = defaults.objectForKey("currentGameEndTime") as String
+        
+        geofenceLat = latDouble as CLLocationDegrees
+        geofenceLon = lonDouble as CLLocationDegrees
+        geofenceCoord = CLLocationCoordinate2DMake(geofenceLat, geofenceLon)
+        gameRadius = radiusDouble as Double
+        println(gameRadius)
+        geofenceRadius = Double(ceil(gameRadius * 1609)) as CLLocationDistance
+        println(geofenceRadius)
+        
         let circle = MKCircle(centerCoordinate: geofenceCoord, radius: geofenceRadius)
         mapView.addOverlay(circle)
         
@@ -56,21 +86,6 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         let circleRegion = MKCoordinateRegionMakeWithDistance(geofenceCoord, geofenceRadius * 4, geofenceRadius * 4)
         let adjustedRegion = mapView.regionThatFits(circleRegion)
         mapView.setRegion(adjustedRegion, animated: true)
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-        // FIXME: these all could be nil
-        if User.currentUser().currentGame.isEmpty {
-            println("current game empty")
-        } else {
-            gameRadius = User.currentUser().currentGame["radius"] as Double
-            geofenceRadius = Double(ceil(gameRadius * 1609)) as CLLocationDistance
-            geofenceLat = User.currentUser().currentGame["center_lat"] as CLLocationDegrees
-            geofenceLon = User.currentUser().currentGame["center_long"] as CLLocationDegrees
-            geofenceCoord = CLLocationCoordinate2DMake(geofenceLat, geofenceLon)
-        }
         
     }
     
