@@ -10,10 +10,13 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
     
     var resultsData = []
     
+    var timer:NSTimer? = nil;
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+//        startTimer()
         
         self.api.delegate = self
         
@@ -23,17 +26,45 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // FIXME: change this (and below) to a completion
+        User.currentUser().getInvitations(User.currentUser().id)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-
-        // TODO: add listener for new game
-        // TODO: make listener listen repeatedly
         
-        User.currentUser().getInvitations(User.currentUser().id)
-
-//        // once new game is returned, display alert that will lead to DropFlagVC
-//        displayNewGameAlert()
+        // FIXME: change this (and above) to a completion
+        
+        // once new game is returned, display alert that will lead to DropFlagVC
+        if User.currentUser().invitations.count > 0 {
+            
+            displayNewGameAlert()
+            
+        }
+        
     }
+    
+//    func startTimer() {
+//        
+//        timer = NSTimer.scheduledTimerWithTimeInterval(15,
+//            target: self,
+//            selector: "onTick:",
+//            userInfo: nil,
+//            repeats: false)
+//        
+//    }
+//
+//    func onTick(timer:NSTimer) {
+//        
+//        User.currentUser().getInvitations(User.currentUser().id)
+//        if User.currentUser().invitations.count > 0 {
+//            displayNewGameAlert()
+//        }
+//        
+//    }
     
     func didReceiveAPIResults(results: NSDictionary) {
         // FIXME: change "results["results"]"
@@ -80,12 +111,16 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
         let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
 
             // Rails: cancel invitation
+            User.currentUser().declineInvitation(User.currentUser().id, invitations: User.currentUser().invitations)
 
         }
 
         alertController.addAction(cancelAction)
         
         let OKAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+            
+            // Rails: accept invitation
+            User.currentUser().acceptInvitation(User.currentUser().id, invitations: User.currentUser().invitations)
             
             // TODO: pass data on to VC
             

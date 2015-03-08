@@ -97,7 +97,6 @@ class CameraVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 //        
 //        FeedData.mainData().feedItems.append(newFlag)
         
-        
         // remove point from sampleData
         let gameVC = presentingViewController as GameVC
         

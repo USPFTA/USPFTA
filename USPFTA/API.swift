@@ -16,6 +16,8 @@ class User {
     
     var id = 6 // FIXME: change this later, by using NSUserDefaults
     
+    var invitations: [[String:AnyObject]] = [[:]]
+    
     var token: String? {
         
         didSet {
@@ -118,11 +120,105 @@ class User {
             // set token
             println(responseInfo)
             
-            if let dataInfo = responseInfo["invitations"] as? [String:AnyObject] {
+            if let dataInfo = responseInfo["invitations"] as? [[String:AnyObject]] {
                 
-                println(dataInfo)
+                self.invitations = dataInfo
                 
             }
+            
+        })
+        
+    }
+    
+    func acceptInvitation(id: Int, invitations: [[String:AnyObject]]) {
+        
+        // TODO: this assumes you want to accept the first invitation in the list
+        let invitation = invitations[0]
+        let inviter_id = invitation["inviter_id"] as Int
+        let invited_id = invitation["invited_id"] as Int
+        let game_id = invitation["game_id"] as Int
+        let invitation_id = invitation["id"] as Int
+        
+        println("\(inviter_id), \(invited_id), \(game_id), \(invitation_id)")
+        
+        let options: [String:AnyObject] = [
+            "endpoint" : "invitations/2/accept",
+            "method" : "POST",
+            "body" : [
+                
+                "invitation" : ["inviter_id" : inviter_id, "invited_id" : invited_id, "game_id" : game_id]
+                //                "invitation" : id
+                
+            ]
+            
+        ]
+        
+        APIRequest.requestWithOptions(options, andCompletion: { (responseInfo) -> () in
+            
+            // set token
+            println("response")
+            println(responseInfo)
+            
+//            if let dataInfo = responseInfo["user"] as? [String:AnyObject] {
+//                
+//                // TODO: save id in NSUserDefaults
+//                
+//                self.id = dataInfo["id"] as Int
+//                println(self.id)
+//                
+//                self.token = dataInfo["authentication_token"] as? String
+//                
+//            }
+            
+            // call getInvitations
+//            self.getInvitations(id)
+            
+        })
+        
+    }
+    
+    func declineInvitation(id: Int, invitations: [[String:AnyObject]]) {
+        
+        // TODO: this assumes you want to accept the first invitation in the list
+        let invitation = invitations[0]
+        let inviter_id = invitation["inviter_id"] as Int
+        let invited_id = invitation["invited_id"] as Int
+        let game_id = invitation["game_id"] as Int
+        let invitation_id = invitation["id"] as Int
+        
+        println("\(inviter_id), \(invited_id), \(game_id), \(invitation_id)")
+        
+        let options: [String:AnyObject] = [
+            "endpoint" : "invitations/\(invitation_id)/decline",
+            "method" : "POST",
+            "body" : [
+                
+                "invitation" : ["inviter_id" : inviter_id, "invited_id" : invited_id, "game_id" : game_id]
+//                "invitation" : id
+                
+            ]
+            
+        ]
+        
+        APIRequest.requestWithOptions(options, andCompletion: { (responseInfo) -> () in
+            
+            // set token
+            println("response")
+            println(responseInfo)
+            
+            //            if let dataInfo = responseInfo["user"] as? [String:AnyObject] {
+            //
+            //                // TODO: save id in NSUserDefaults
+            //
+            //                self.id = dataInfo["id"] as Int
+            //                println(self.id)
+            //
+            //                self.token = dataInfo["authentication_token"] as? String
+            //
+            //            }
+            
+            // call getInvitations
+//            self.getInvitations(id)
             
         })
         
@@ -139,12 +235,12 @@ class APIRequest {
         var options = [
         
             "endpoint" : endpoint,
-            "method" : method,
-            "body" : [
-            
-                "user" : ["authentication_token" : User.currentUser().token!]
-            
-            ]
+            "method" : method
+//            "body" : [
+//            
+//                "user" : ["authentication_token" : User.currentUser().token!]
+//            
+//            ]
             
         ] as [String:AnyObject]
         
