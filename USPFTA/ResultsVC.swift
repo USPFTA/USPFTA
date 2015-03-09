@@ -120,8 +120,8 @@ class ResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,  
         
         let OKAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
             
-            // Rails: accept invitation
-            User.currentUser().acceptInvitation(User.currentUser().id, invitations: User.currentUser().invitations)
+//            // Rails: accept invitation
+//            User.currentUser().acceptInvitation(User.currentUser().id, invitations: User.currentUser().invitations)
             
             // TODO: pass data on to VC
             

@@ -9,19 +9,12 @@
 import UIKit
 import MapKit
 
-var currentGame:[String:AnyObject] = [:]
-
-var gameRadius:Double = 0
-var geofenceRadius:CLLocationDistance = 0
-var geofenceLat:CLLocationDegrees = 0
-var geofenceLon:CLLocationDegrees = 0
-var geofenceCoord = CLLocationCoordinate2DMake(geofenceLat, geofenceLon)
-
-//let geofenceCoord = CLLocationCoordinate2DMake(33.7518732, -84.3914068)
+let geofenceRadius = 1609 as CLLocationDistance
+let geofenceCoord = CLLocationCoordinate2DMake(33.7518732, -84.3914068)
 var userFlagCoords:CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
 
 class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var objectiveTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var beginButton: UIButton!
@@ -34,8 +27,14 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // local notifications
+        // TODO: move this somewhere else, possibly
+        let notificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        let notificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
         beginButton.hidden = true
-
+        
         mapView.delegate = self
         
         manager = CLLocationManager()
@@ -51,34 +50,6 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         lpgr.minimumPressDuration = 1
         mapView.addGestureRecognizer(lpgr)
         
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-        let currentGame = User.currentUser().currentGame
-        println(currentGame)
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        println("test")
-        
-        let lat = defaults.objectForKey("currentGameLat") as String
-        println(lat)
-        let latDouble = (lat as NSString).doubleValue
-        let lon = defaults.objectForKey("currentGameLon") as String
-        let lonDouble = (lon as NSString).doubleValue
-        let radius = defaults.objectForKey("currentGameRadius") as String
-        let radiusDouble = (radius as NSString).doubleValue
-        let endTime = defaults.objectForKey("currentGameEndTime") as String
-        
-        geofenceLat = latDouble as CLLocationDegrees
-        geofenceLon = lonDouble as CLLocationDegrees
-        geofenceCoord = CLLocationCoordinate2DMake(geofenceLat, geofenceLon)
-        gameRadius = radiusDouble as Double
-        println(gameRadius)
-        geofenceRadius = Double(ceil(gameRadius * 1609)) as CLLocationDistance
-        println(geofenceRadius)
-        
         let circle = MKCircle(centerCoordinate: geofenceCoord, radius: geofenceRadius)
         mapView.addOverlay(circle)
         
@@ -90,7 +61,7 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     }
     
     func dropFlag(gestureRecognizer: UIGestureRecognizer) {
-                
+        
         if gestureRecognizer.state != UIGestureRecognizerState.Began {
             return
         }
@@ -99,7 +70,7 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         if let flagAnn = flagAnnotation {
             mapView.removeAnnotation(flagAnnotation)
         }
-            
+        
         let touchPoint = gestureRecognizer.locationInView(mapView)
         let touchMapCoord:CLLocationCoordinate2D = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
         var annotation = MKPointAnnotation()
@@ -109,7 +80,7 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         println(touchMapCoord.latitude)
         println(touchMapCoord.longitude)
         
-        // alert user if flag is outside geofence
+        // TODO: alert user if flag is outside geofence
         let touchMapLocation = CLLocation(latitude: touchMapCoord.latitude, longitude: touchMapCoord.longitude)
         let geofenceCenter = CLLocation(latitude: geofenceCoord.latitude, longitude: geofenceCoord.longitude)
         if touchMapLocation.distanceFromLocation(geofenceCenter) <= geofenceRadius {
@@ -118,7 +89,7 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             mapView.addAnnotation(annotation)
             userFlagCoords = touchMapCoord
             
-            // only show button when *both* the textfield is filled out and the flag is dropped
+            // TODO: only show button when *both* the textfield is filled out and the flag is dropped. this status will need to be checked in two places
             if (objectiveTextField.text != "" && flagAnnotation != nil) {
                 beginButton.hidden = false
             }
@@ -129,6 +100,15 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             displayGeofenceAlert()
             
         }
+        
+    }
+    
+    func displayGeofenceAlert() {
+        
+        let alertController = UIAlertController(title: "Tap location is outside range. Please place a flag within the playing field.", message: nil, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(OKAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     
@@ -154,16 +134,16 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         if annotation is MKPointAnnotation {
-
+            
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             annotationView.image = UIImage(named: "flag")
             annotationView.annotation = annotation
             annotationView.canShowCallout = true
-
+            
             return annotationView
             
         }
-
+        
         return nil
         
     }
@@ -172,31 +152,28 @@ class DropFlagVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         view.endEditing(true)
         
-        // only show button when *both* the textfield is filled out and the flag is dropped
+        // TODO: only show button when *both* the textfield is filled out and the flag is dropped. this status will need to be checked in two places
         if (objectiveTextField.text != "" && flagAnnotation != nil) {
             beginButton.hidden = false
         }
         
     }
-
+    
     @IBAction func beginGame(sender: AnyObject) {
         
         // double-check that they have both a flag and text
         // probably a job for back-end
-        let userFlagLat = userFlagCoords.latitude
-        let userFlagLon = userFlagCoords.longitude
-        User.currentUser().placeFlag(objectiveTextField.text, lat: userFlagLat, lon: userFlagLon)
         
     }
     
-    // MARK: Alerts
-    func displayGeofenceAlert() {
-        
-        let alertController = UIAlertController(title: "Tap location is outside range. Please place a flag within the playing field.", message: nil, preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(OKAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-        
+    /*
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
-
+    */
+    
 }

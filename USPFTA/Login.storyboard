@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5u-OU-IBv" userLabel="LoginContainer">
-                                <rect key="frame" x="158" y="194" width="285" height="212"/>
+                                <rect key="frame" x="158" y="168" width="285" height="212"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCe-pY-iGz" userLabel="Email Label">
                                         <rect key="frame" x="40" y="4" width="38" height="21"/>
@@ -201,7 +201,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="K5u-OU-IBv" firstAttribute="top" secondItem="ZV6-jj-Bpi" secondAttribute="bottom" constant="46" id="58p-6o-PJ1"/>
+                            <constraint firstItem="K5u-OU-IBv" firstAttribute="top" secondItem="ZV6-jj-Bpi" secondAttribute="bottom" constant="20" id="58p-6o-PJ1"/>
                             <constraint firstItem="ZV6-jj-Bpi" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="XJL-0v-JCY"/>
                             <constraint firstAttribute="centerX" secondItem="ZV6-jj-Bpi" secondAttribute="centerX" id="dph-hx-hBL"/>
                             <constraint firstAttribute="centerX" secondItem="K5u-OU-IBv" secondAttribute="centerX" id="hXU-SA-QP3"/>

@@ -13,20 +13,18 @@ let proximity:Double = 400 // meters
 
 class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-//    var flags: [[String:AnyObject]] = [[:]]
-    
     var sampleData: [[String:AnyObject]] = [ // other players' flags
-        ["latitude": 33.7586630800343, "longitude": -84.3826462453672, "objective": "Photo"],
-        ["latitude": 33.7566878966899, "longitude": -84.3937825443492, "objective": "Audio"],
-        ["latitude": 33.7522435697036, "longitude": -84.3845765360579, "objective": "Video"],
-        ["latitude": 33.751688015529, "longitude": -84.3946734474182, "objective": "Statue"],
-        ["latitude": 33.7390326877359, "longitude": -84.3870265212676, "objective": "Monument"],
-        ["latitude": 33.7518114731818, "longitude": -84.3839826006786, "objective": "Playground"],
-        ["latitude": 33.7558237411146, "longitude": -84.399127967011, "objective": "Football helmet"],
-        ["latitude": 33.7645266335291, "longitude": -84.387620459479, "objective": "Milkshake"],
-        ["latitude": 33.7560706417568, "longitude": -84.3885113611318, "objective": "Anything"]
+        ["latitude": 33.7586630800343, "longitude": -84.3826462453672, "objective": "Take selfie with menu"],
+        ["latitude": 33.7566878966899, "longitude": -84.3937825443492, "objective": "Take a photo of your receipt"],
+        ["latitude": 33.7522435697036, "longitude": -84.3845765360579, "objective": "Dip your head in the fountain"],
+        ["latitude": 33.751688015529, "longitude": -84.3946734474182, "objective": "Jump near CODE"],
+        ["latitude": 33.7390326877359, "longitude": -84.3870265212676, "objective": "Take a picture with the cowboy"],
+        ["latitude": 33.7518114731818, "longitude": -84.3839826006786, "objective": "Pose with the statue"],
+        ["latitude": 33.7558237411146, "longitude": -84.399127967011, "objective": "Selfie at library circulation desk"],
+        ["latitude": 33.7645266335291, "longitude": -84.387620459479, "objective": "Buy a bagel"],
+        ["latitude": 33.7560706417568, "longitude": -84.3885113611318, "objective": "Selfie with street sign"]
     ]
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     var manager:CLLocationManager!
@@ -43,22 +41,6 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
-
-    }
-    
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(true)
-//        
-//        User.currentUser().listFlags()
-//        
-//        flags = User.currentUser().gameFlags
-//        
-//    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        
-        println("test")
         
         let circle = MKCircle(centerCoordinate: geofenceCoord, radius: geofenceRadius)
         mapView.addOverlay(circle)
@@ -77,19 +59,13 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         for location in sampleData as [[String:AnyObject]] {
             
-            println(location)
-            
             let annotation = MKPointAnnotation()
-            // convert to Double
-//            let latDouble = location["flag_lat"] as Double
-//            let lonDouble = location["flag_long"] as Double
-//            let latitude = latDouble as CLLocationDegrees
-//            let longitude = lonDouble as CLLocationDegrees
-//            let
-//            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-//            annotation.coordinate = coordinate
-//            annotation.title = location["objective"] as String
-//            mapView.addAnnotation(annotation)
+            let latitude = location["latitude"] as CLLocationDegrees
+            let longitude = location["longitude"] as CLLocationDegrees
+            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            annotation.coordinate = coordinate
+            annotation.title = location["objective"] as String
+            mapView.addAnnotation(annotation)
             
         }
         
@@ -149,6 +125,7 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                 
                 // present alert view
                 displayProximityAlert(location, index: i)
+                manager.stopUpdatingLocation()
                 break
                 
             }
@@ -159,25 +136,25 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
-    // MARK: Alerts
     func displayProximityAlert(location: [String:AnyObject], index: Int) {
         
         let objective = location["objective"] as String
         
         let alertController = UIAlertController(title: "You are near a flag", message: "Take a photo that represents \"\(objective)\"", preferredStyle: .Alert)
         
-//        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
-//            
-////            // segue to whatever was tapped on:
-////            self.tabBarController?.selectedIndex = navigatingTo
-//            
-//        }
-//        
-//        alertController.addAction(cancelAction)
+        //        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
+        //
+        ////            // segue to whatever was tapped on:
+        ////            self.tabBarController?.selectedIndex = navigatingTo
+        //
+        //        }
+        //
+        //        alertController.addAction(cancelAction)
         
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
             
             let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+            // TODO: change VC class
             let vc = storyboard.instantiateViewControllerWithIdentifier("cameraVC") as CameraVC
             
             // pass flag data on to VC
@@ -194,14 +171,14 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
     
@@ -212,5 +189,5 @@ class GameVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         presentViewController(vc, animated: true, completion: nil)
         
     }
-
+    
 }
