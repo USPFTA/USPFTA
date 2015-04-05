@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC29D87E1AAB56C100BB15D6 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC29D87D1AAB562B00BB15D6 /* fontawesome-webfont.ttf */; };
+		EC86B3DE1AD1BECD006B139C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3DD1AD1BECD006B139C /* API.swift */; };
+		EC86B3E31AD1BF09006B139C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B3E01AD1BF09006B139C /* Login.storyboard */; };
+		EC86B3E41AD1BF09006B139C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3E11AD1BF09006B139C /* LoginVC.swift */; };
+		EC86B3EB1AD1BF21006B139C /* APIControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3E51AD1BF21006B139C /* APIControllerProtocol.swift */; };
+		EC86B3EC1AD1BF21006B139C /* DropFlagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3E61AD1BF21006B139C /* DropFlagVC.swift */; };
+		EC86B3ED1AD1BF21006B139C /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3E71AD1BF21006B139C /* GameVC.swift */; };
+		EC86B3EE1AD1BF21006B139C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B3E81AD1BF21006B139C /* Main.storyboard */; };
+		EC86B3F31AD1BF3C006B139C /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B3F11AD1BF3C006B139C /* Camera.storyboard */; };
+		EC86B3F41AD1BF3C006B139C /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3F21AD1BF3C006B139C /* CameraVC.swift */; };
+		EC86B3F81AD1BF52006B139C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3F51AD1BF52006B139C /* AppDelegate.swift */; };
+		EC86B3F91AD1BF52006B139C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC86B3F61AD1BF52006B139C /* Images.xcassets */; };
+		EC86B3FD1AD1BF85006B139C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC86B3FB1AD1BF85006B139C /* LaunchScreen.xib */; };
+		EC86B4021AD1C0A5006B139C /* FlagTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B3FE1AD1BF93006B139C /* FlagTagTests.swift */; };
+		EC86B4041AD1D70B006B139C /* InvitationsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B4031AD1D70B006B139C /* InvitationsTVC.swift */; };
+		EC86B4061AD1DA91006B139C /* ResultsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B4051AD1DA91006B139C /* ResultsTVC.swift */; };
+		EC86B4081AD1DCE8006B139C /* ScoreTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B4071AD1DCE8006B139C /* ScoreTVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC5315511AAA8CB30077A14A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC5315331AAA8CB30077A14A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC53153A1AAA8CB30077A14A;
+			remoteInfo = USPFTA;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC29D87D1AAB562B00BB15D6 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		EC53153B1AAA8CB30077A14A /* FlagTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC5315501AAA8CB30077A14A /* FlagTagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlagTagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC86B3DD1AD1BECD006B139C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = FlagTag/API.swift; sourceTree = SOURCE_ROOT; };
+		EC86B3E01AD1BF09006B139C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = FlagTag/Login.storyboard; sourceTree = SOURCE_ROOT; };
+		EC86B3E11AD1BF09006B139C /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = FlagTag/LoginVC.swift; sourceTree = SOURCE_ROOT; };
+		EC86B3E51AD1BF21006B139C /* APIControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIControllerProtocol.swift; path = FlagTag/APIControllerProtocol.swift; sourceTree = SOURCE_ROOT; };
+		EC86B3E61AD1BF21006B139C /* DropFlagVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropFlagVC.swift; path = FlagTag/DropFlagVC.swift; sourceTree = SOURCE_ROOT; };
+		EC86B3E71AD1BF21006B139C /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameVC.swift; path = FlagTag/GameVC.swift; sourceTree = SOURCE_ROOT; };
+		EC86B3E81AD1BF21006B139C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = FlagTag/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		EC86B3F11AD1BF3C006B139C /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Camera.storyboard; path = FlagTag/Camera.storyboard; sourceTree = SOURCE_ROOT; };
+		EC86B3F21AD1BF3C006B139C /* CameraVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraVC.swift; path = FlagTag/CameraVC.swift; sourceTree = SOURCE_ROOT; };
+		EC86B3F51AD1BF52006B139C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FlagTag/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		EC86B3F61AD1BF52006B139C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlagTag/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		EC86B3F71AD1BF52006B139C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FlagTag/Info.plist; sourceTree = SOURCE_ROOT; };
+		EC86B3FC1AD1BF85006B139C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = FlagTag/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
+		EC86B3FE1AD1BF93006B139C /* FlagTagTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlagTagTests.swift; path = FlagTagTests/FlagTagTests.swift; sourceTree = SOURCE_ROOT; };
+		EC86B4001AD1BF9B006B139C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FlagTagTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		EC86B4031AD1D70B006B139C /* InvitationsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationsTVC.swift; path = FlagTag/InvitationsTVC.swift; sourceTree = SOURCE_ROOT; };
+		EC86B4051AD1DA91006B139C /* ResultsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsTVC.swift; path = FlagTag/ResultsTVC.swift; sourceTree = SOURCE_ROOT; };
+		EC86B4071AD1DCE8006B139C /* ScoreTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreTVC.swift; path = FlagTag/ScoreTVC.swift; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC5315381AAA8CB30077A14A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC53154D1AAA8CB30077A14A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC2887851AAB811200FF017B /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				EC86B3F21AD1BF3C006B139C /* CameraVC.swift */,
+				EC86B3F11AD1BF3C006B139C /* Camera.storyboard */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		EC29D86F1AAB323400BB15D6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EC86B3E11AD1BF09006B139C /* LoginVC.swift */,
+				EC86B3E01AD1BF09006B139C /* Login.storyboard */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		EC29D87C1AAB55B300BB15D6 /* GameVCs */ = {
+			isa = PBXGroup;
+			children = (
+				EC86B4031AD1D70B006B139C /* InvitationsTVC.swift */,
+				EC86B3E61AD1BF21006B139C /* DropFlagVC.swift */,
+				EC86B3E71AD1BF21006B139C /* GameVC.swift */,
+				EC86B3E51AD1BF21006B139C /* APIControllerProtocol.swift */,
+				EC86B4051AD1DA91006B139C /* ResultsTVC.swift */,
+				EC86B4071AD1DCE8006B139C /* ScoreTVC.swift */,
+				EC86B3E81AD1BF21006B139C /* Main.storyboard */,
+			);
+			name = GameVCs;
+			sourceTree = "<group>";
+		};
+		EC5315321AAA8CB30077A14A = {
+			isa = PBXGroup;
+			children = (
+				EC53153D1AAA8CB30077A14A /* FlagTag */,
+				EC5315531AAA8CB30077A14A /* FlagTagTests */,
+				EC53153C1AAA8CB30077A14A /* Products */,
+				EC29D87D1AAB562B00BB15D6 /* fontawesome-webfont.ttf */,
+			);
+			sourceTree = "<group>";
+		};
+		EC53153C1AAA8CB30077A14A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC53153B1AAA8CB30077A14A /* FlagTag.app */,
+				EC5315501AAA8CB30077A14A /* FlagTagTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC53153D1AAA8CB30077A14A /* FlagTag */ = {
+			isa = PBXGroup;
+			children = (
+				EC86B3DD1AD1BECD006B139C /* API.swift */,
+				EC29D86F1AAB323400BB15D6 /* Login */,
+				EC29D87C1AAB55B300BB15D6 /* GameVCs */,
+				EC2887851AAB811200FF017B /* Camera */,
+				EC53153E1AAA8CB30077A14A /* Supporting Files */,
+			);
+			name = FlagTag;
+			path = USPFTA;
+			sourceTree = "<group>";
+		};
+		EC53153E1AAA8CB30077A14A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC86B3F51AD1BF52006B139C /* AppDelegate.swift */,
+				EC86B3F61AD1BF52006B139C /* Images.xcassets */,
+				EC86B3FB1AD1BF85006B139C /* LaunchScreen.xib */,
+				EC86B3F71AD1BF52006B139C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC5315531AAA8CB30077A14A /* FlagTagTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC86B3FE1AD1BF93006B139C /* FlagTagTests.swift */,
+				EC5315541AAA8CB30077A14A /* Supporting Files */,
+			);
+			name = FlagTagTests;
+			path = USPFTATests;
+			sourceTree = "<group>";
+		};
+		EC5315541AAA8CB30077A14A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC86B4001AD1BF9B006B139C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC53153A1AAA8CB30077A14A /* FlagTag */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC53155A1AAA8CB30077A14A /* Build configuration list for PBXNativeTarget "FlagTag" */;
+			buildPhases = (
+				EC5315371AAA8CB30077A14A /* Sources */,
+				EC5315381AAA8CB30077A14A /* Frameworks */,
+				EC5315391AAA8CB30077A14A /* Resources */,
+				EC29D86E1AAAB03500BB15D6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlagTag;
+			productName = USPFTA;
+			productReference = EC53153B1AAA8CB30077A14A /* FlagTag.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC53154F1AAA8CB30077A14A /* FlagTagTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC53155D1AAA8CB30077A14A /* Build configuration list for PBXNativeTarget "FlagTagTests" */;
+			buildPhases = (
+				EC53154C1AAA8CB30077A14A /* Sources */,
+				EC53154D1AAA8CB30077A14A /* Frameworks */,
+				EC53154E1AAA8CB30077A14A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC5315521AAA8CB30077A14A /* PBXTargetDependency */,
+			);
+			name = FlagTagTests;
+			productName = USPFTATests;
+			productReference = EC5315501AAA8CB30077A14A /* FlagTagTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC5315331AAA8CB30077A14A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Proximity Viz LLC";
+				TargetAttributes = {
+					EC53153A1AAA8CB30077A14A = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 34XFQ7WVN3;
+					};
+					EC53154F1AAA8CB30077A14A = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = EC53153A1AAA8CB30077A14A;
+					};
+				};
+			};
+			buildConfigurationList = EC5315361AAA8CB30077A14A /* Build configuration list for PBXProject "FlagTag" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC5315321AAA8CB30077A14A;
+			productRefGroup = EC53153C1AAA8CB30077A14A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC53153A1AAA8CB30077A14A /* FlagTag */,
+				EC53154F1AAA8CB30077A14A /* FlagTagTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC5315391AAA8CB30077A14A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC86B3EE1AD1BF21006B139C /* Main.storyboard in Resources */,
+				EC86B3F31AD1BF3C006B139C /* Camera.storyboard in Resources */,
+				EC86B3FD1AD1BF85006B139C /* LaunchScreen.xib in Resources */,
+				EC86B3F91AD1BF52006B139C /* Images.xcassets in Resources */,
+				EC86B3E31AD1BF09006B139C /* Login.storyboard in Resources */,
+				EC29D87E1AAB56C100BB15D6 /* fontawesome-webfont.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC53154E1AAA8CB30077A14A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EC29D86E1AAAB03500BB15D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC5315371AAA8CB30077A14A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC86B3F81AD1BF52006B139C /* AppDelegate.swift in Sources */,
+				EC86B3DE1AD1BECD006B139C /* API.swift in Sources */,
+				EC86B3E41AD1BF09006B139C /* LoginVC.swift in Sources */,
+				EC86B3EB1AD1BF21006B139C /* APIControllerProtocol.swift in Sources */,
+				EC86B4061AD1DA91006B139C /* ResultsTVC.swift in Sources */,
+				EC86B4041AD1D70B006B139C /* InvitationsTVC.swift in Sources */,
+				EC86B3F41AD1BF3C006B139C /* CameraVC.swift in Sources */,
+				EC86B3ED1AD1BF21006B139C /* GameVC.swift in Sources */,
+				EC86B4081AD1DCE8006B139C /* ScoreTVC.swift in Sources */,
+				EC86B3EC1AD1BF21006B139C /* DropFlagVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC53154C1AAA8CB30077A14A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC86B4021AD1C0A5006B139C /* FlagTagTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC5315521AAA8CB30077A14A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC53153A1AAA8CB30077A14A /* FlagTag */;
+			targetProxy = EC5315511AAA8CB30077A14A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC86B3FB1AD1BF85006B139C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC86B3FC1AD1BF85006B139C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC5315581AAA8CB30077A14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EC5315591AAA8CB30077A14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC53155B1AAA8CB30077A14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = FlagTag/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = FlagTag;
+			};
+			name = Debug;
+		};
+		EC53155C1AAA8CB30077A14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = FlagTag/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = FlagTag;
+			};
+			name = Release;
+		};
+		EC53155E1AAA8CB30077A14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FlagTag/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = FlagTagTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlagTag.app/FlagTag";
+			};
+			name = Debug;
+		};
+		EC53155F1AAA8CB30077A14A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FlagTag/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = FlagTagTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlagTag.app/FlagTag";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC5315361AAA8CB30077A14A /* Build configuration list for PBXProject "FlagTag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC5315581AAA8CB30077A14A /* Debug */,
+				EC5315591AAA8CB30077A14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC53155A1AAA8CB30077A14A /* Build configuration list for PBXNativeTarget "FlagTag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC53155B1AAA8CB30077A14A /* Debug */,
+				EC53155C1AAA8CB30077A14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC53155D1AAA8CB30077A14A /* Build configuration list for PBXNativeTarget "FlagTagTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC53155E1AAA8CB30077A14A /* Debug */,
+				EC53155F1AAA8CB30077A14A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC5315331AAA8CB30077A14A /* Project object */;
+}
